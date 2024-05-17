@@ -21,30 +21,24 @@ const menu_data: MenuItem[] = [
     id: 2,
     has_dropdown: true,
     title: "Causes",
-    link: "#",
-    sub_menus: [{ link: "/causes", title: "Causes" }],
+    link: "/causes",
+    // sub_menus: [
+    //   { link: "/causes", title: "Causes" },
+    //   { link: "/causes-slider", title: "Causes Slider" },
+    //   { link: "/causes-details", title: "Causes Details" },
+    // ],
   },
-  {
-    id: 3,
-    has_dropdown: true,
-    title: "Events",
-    link: "#",
-    sub_menus: [
-      { link: "/events", title: "Events" },
-      { link: "/events-slider", title: "Events Slider" },
-      { link: "/event-details", title: "Events Details" },
-    ],
-  },
+
   {
     id: 4,
     has_dropdown: true,
     title: "Portfolio",
     link: "#",
-    sub_menus: [
-      { link: "/portfolio", title: "Portfolio" },
-      { link: "/portfolio-details", title: "Portfolio Details" },
-      { link: "/donate", title: "Donate" },
-    ],
+    // sub_menus: [
+    //   { link: "/portfolio", title: "Portfolio" },
+    //   { link: "/portfolio-details", title: "Portfolio Details" },
+    //   { link: "/donate", title: "Donate" },
+    // ],
   },
   {
     id: 5,
