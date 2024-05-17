@@ -2,7 +2,7 @@ import HomeOne from "@/components/homes/home-one";
 import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {
-  title: "Charite - Charity & Donation React Next js Template",
+  title: "Charite - Charity ",
 };
 const index = () => {
   return (
