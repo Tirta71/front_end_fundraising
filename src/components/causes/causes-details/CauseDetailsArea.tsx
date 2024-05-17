@@ -36,7 +36,7 @@ const CauseDetailsArea = ({ id_cause }: CauseDetailsAreaProps) => {
               <div className="details-image mb-30">
                 {causeDetails ? (
                   <Image
-                    src={`http://localhost:8000/storage/${causeDetails.thumbnail}`}
+                    src={`https://tirta.site/storage/${causeDetails?.thumbnail}`}
                     alt="image"
                     width={800}
                     height={600}

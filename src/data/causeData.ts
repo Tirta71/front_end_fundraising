@@ -21,6 +21,7 @@ import cause3Thumb_3 from "@/assets/img/causes/cause-three3.jpg";
 import recentCauseThumb_1 from "@/assets/img/widgets/cause1.jpg";
 import recentCauseThumb_2 from "@/assets/img/widgets/cause2.jpg";
 import recentCauseThumb_3 from "@/assets/img/widgets/cause3.jpg";
+import { ReactNode } from "react";
 
 interface DataType {
   name: ReactNode;
@@ -49,6 +50,7 @@ const cause_data: DataType[] = [
     raised: 87689,
     goal: 87689,
     progress_width: "75%",
+    name: undefined,
   },
   {
     id: 2,
@@ -61,6 +63,7 @@ const cause_data: DataType[] = [
     progress_width: "60%",
     progress_bg: "progress-bar--yellow",
     btn_bg: "btn--yellow",
+    name: undefined,
   },
   {
     id: 3,
@@ -73,6 +76,7 @@ const cause_data: DataType[] = [
     progress_width: "70%",
     progress_bg: "progress-bar--green",
     btn_bg: "btn--green",
+    name: undefined,
   },
   {
     id: 4,
@@ -83,6 +87,7 @@ const cause_data: DataType[] = [
     raised: 87689,
     goal: 87689,
     progress_width: "75%",
+    name: undefined,
   },
 
   // home two
@@ -97,6 +102,7 @@ const cause_data: DataType[] = [
     goal: 200587,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 2,
@@ -111,6 +117,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 3,
@@ -125,6 +132,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 4,
@@ -139,6 +147,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
 
   // home three
@@ -152,6 +161,7 @@ const cause_data: DataType[] = [
     raised: 23785,
     goal: 87563,
     percentage: 80,
+    name: undefined,
   },
   {
     id: 2,
@@ -163,6 +173,7 @@ const cause_data: DataType[] = [
     goal: 80563,
     percentage: 50,
     item_bg: "item--green",
+    name: undefined,
   },
   {
     id: 3,
@@ -174,6 +185,7 @@ const cause_data: DataType[] = [
     goal: 86563,
     percentage: 70,
     item_bg: "item--yellow",
+    name: undefined,
   },
 
   // Inner Page
@@ -188,6 +200,7 @@ const cause_data: DataType[] = [
     goal: 200587,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 2,
@@ -202,6 +215,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 3,
@@ -216,6 +230,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 4,
@@ -227,6 +242,7 @@ const cause_data: DataType[] = [
     goal: 1547689,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 5,
@@ -241,6 +257,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 6,
@@ -255,6 +272,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 7,
@@ -266,6 +284,7 @@ const cause_data: DataType[] = [
     goal: 247874,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 8,
@@ -280,6 +299,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 9,
@@ -294,6 +314,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 10,
@@ -305,6 +326,7 @@ const cause_data: DataType[] = [
     goal: 247874,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 11,
@@ -319,6 +341,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 12,
@@ -333,6 +356,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 13,
@@ -344,6 +368,7 @@ const cause_data: DataType[] = [
     goal: 1547689,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 14,
@@ -358,6 +383,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 15,
@@ -372,6 +398,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 16,
@@ -383,6 +410,7 @@ const cause_data: DataType[] = [
     goal: 200587,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 17,
@@ -397,6 +425,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 18,
@@ -411,6 +440,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 19,
@@ -422,6 +452,7 @@ const cause_data: DataType[] = [
     goal: 200587,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 20,
@@ -436,6 +467,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 21,
@@ -450,6 +482,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 22,
@@ -461,6 +494,7 @@ const cause_data: DataType[] = [
     goal: 1547689,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 23,
@@ -475,6 +509,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 24,
@@ -489,6 +524,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 25,
@@ -500,6 +536,7 @@ const cause_data: DataType[] = [
     goal: 247874,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 26,
@@ -514,6 +551,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 27,
@@ -528,6 +566,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
   {
     id: 28,
@@ -539,6 +578,7 @@ const cause_data: DataType[] = [
     goal: 247874,
     percentage: 90,
     progress_bg: "one",
+    name: undefined,
   },
   {
     id: 29,
@@ -553,6 +593,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--yellow",
     price_color: "cause-price--yellow",
     item_bg: "cause-yellow",
+    name: undefined,
   },
   {
     id: 30,
@@ -567,6 +608,7 @@ const cause_data: DataType[] = [
     btn_bg: "btn--green",
     price_color: "cause-price--green",
     item_bg: "cause-green",
+    name: undefined,
   },
 
   // recent cause
@@ -578,6 +620,7 @@ const cause_data: DataType[] = [
     title: "Clothes For Everyone",
     raised: 23785,
     goal: 87563,
+    name: undefined,
   },
   {
     id: 2,
@@ -586,6 +629,7 @@ const cause_data: DataType[] = [
     title: "New Kindergarten",
     raised: 17568,
     goal: 20898,
+    name: undefined,
   },
   {
     id: 3,
@@ -594,6 +638,7 @@ const cause_data: DataType[] = [
     title: "Food for childen",
     raised: 30635,
     goal: 50658,
+    name: undefined,
   },
 ];
 

@@ -1,3 +1,4 @@
+"use client";
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -53,7 +54,7 @@ interface CauseDetailsFormProps {
 
 const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
   const [selectedPrice, setSelectedPrice] = useState<string | null>(
-    price_data[0].price_title.toString() // Menggunakan price_title di sini
+    price_data[0].price_title.toString()
   );
 
   const handlePriceChange = (price: string) => {
@@ -67,6 +68,7 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
   } = useForm<FormData>();
 
   const handleSubmit = async (data: FormData) => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("phone_number", data.phoneNumber);
@@ -86,19 +88,15 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axios.post(
-            "https://tirta.site/api/donaturs/add",
-            formData,
-            {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
+          const response = await axios.post(`${apiUrl}donaturs/add`, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          });
 
           Swal.fire({
             title: "Donation submitted successfully",
-            text: "Thankyou for your donation :)",
+            text: "Thank you for your donation :)",
             icon: "success",
           }).then((result) => {
             if (result.isConfirmed) {

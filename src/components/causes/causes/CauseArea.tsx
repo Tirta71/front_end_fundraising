@@ -96,7 +96,7 @@ const CauseArea = () => {
                 <div className={`cause-two-item ${item.item_bg}`}>
                   <div className="image">
                     <img
-                      src={`http://localhost:8000/storage/${item.thumbnail}`}
+                      src={`https://tirta.site/storage/${item.thumbnail}`}
                       alt="cause_image"
                       style={{
                         width: "100%",

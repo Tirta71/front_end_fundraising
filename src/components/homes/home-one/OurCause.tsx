@@ -65,7 +65,7 @@ const OurCause = () => {
               <div className="cause-item">
                 <div className="image">
                   <img
-                    src={`http://localhost:8000/storage/${item.thumbnail}`}
+                    src={`https://tirta.site/storage/${item.thumbnail}`}
                     alt="cause"
                     style={{
                       width: "300px",

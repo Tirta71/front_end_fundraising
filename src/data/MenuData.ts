@@ -22,11 +22,7 @@ const menu_data: MenuItem[] = [
     has_dropdown: true,
     title: "Causes",
     link: "#",
-    sub_menus: [
-      { link: "/causes", title: "Causes" },
-      { link: "/causes-slider", title: "Causes Slider" },
-      { link: "/causes-details", title: "Causes Details" },
-    ],
+    sub_menus: [{ link: "/causes", title: "Causes" }],
   },
   {
     id: 3,
