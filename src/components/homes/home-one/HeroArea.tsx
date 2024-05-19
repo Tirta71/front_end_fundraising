@@ -21,8 +21,12 @@ const HeroArea = () => {
             <Link className="cr-btn" href="/causes">
               Donate Now
             </Link>
-            <Link className="cr-btn btn--yellow btn--style-two" href="#">
-              Contac us
+            <Link
+              className="cr-btn btn--yellow btn--style-two"
+              href="https://wa.me/6281284964533"
+              target="_blank"
+            >
+              Contact us
             </Link>
           </div>
         </div>

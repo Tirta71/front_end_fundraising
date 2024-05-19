@@ -34,37 +34,38 @@ const menu_data: MenuItem[] = [
     has_dropdown: true,
     title: "Portfolio",
     link: "#",
-    // sub_menus: [
-    //   { link: "/portfolio", title: "Portfolio" },
-    //   { link: "/portfolio-details", title: "Portfolio Details" },
-    //   { link: "/donate", title: "Donate" },
-    // ],
+    sub_menus: [
+      { link: "/portfolio", title: "Portfolio" },
+      { link: "/portfolio-details", title: "Portfolio Details" },
+      { link: "/donate", title: "Donate" },
+    ],
   },
   {
     id: 5,
     has_dropdown: true,
-    title: "Pages",
+    title: "other",
     link: "#",
     sub_menus: [
-      { link: "/about", title: "About Us" },
+      // { link: "/about", title: "About Us" },
       { link: "/contact", title: "Contact Us" },
       { link: "/volunteers", title: "Volunteers" },
       { link: "/become-volunteers", title: "Become Volunteer" },
       { link: "/faqs", title: "FAQ Page" },
-      { link: "/not-found", title: "404 Error" },
+      // { link: "/not-found", title: "404 Error" },
     ],
   },
-  {
-    id: 6,
-    has_dropdown: true,
-    title: "Blog",
-    link: "#",
-    sub_menus: [
-      { link: "/blog", title: "Blog" },
-      { link: "/blog-clasic", title: "Blog Clasic" },
-      { link: "/blog-slider", title: "Blog Slider" },
-      { link: "/blog-details", title: "Blog Details" },
-    ],
-  },
+
+  // {
+  //   id: 6,
+  //   has_dropdown: true,
+  //   title: "Blog",
+  //   link: "#",
+  //   sub_menus: [
+  //     { link: "/blog", title: "Blog" },
+  //     { link: "/blog-clasic", title: "Blog Clasic" },
+  //     { link: "/blog-slider", title: "Blog Slider" },
+  //     { link: "/blog-details", title: "Blog Details" },
+  //   ],
+  // },
 ];
 export default menu_data;

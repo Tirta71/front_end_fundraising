@@ -2,10 +2,7 @@ import Breadcrumb from "@/components/common/Breadcrumb";
 import FooterOne from "@/layout/footers/FooterOne";
 import HeaderOne from "@/layout/headers/HeaderOne";
 import Brand from "@/components/common/Brand";
-
 import FaqStyleOne from "./FaqStyleOne";
-
-import FaqStyleTwo from "./FaqStyleTwo";
 
 const Faqs = () => {
   return (
@@ -19,9 +16,6 @@ const Faqs = () => {
         />
 
         <FaqStyleOne />
-
-        <FaqStyleTwo />
-        <Brand style={true} />
       </main>
       <FooterOne />
     </>

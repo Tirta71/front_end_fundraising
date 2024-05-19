@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import volunteerVideoThumb from "@/assets/img/valunteer/become-video.jpg";
+import volunteerVideoThumb from "@/assets/img/valunteer/why-volunter.jpg";
 
 interface ContentType {
   desc_1: JSX.Element;
@@ -35,14 +35,13 @@ const content_data: ContentType = {
     <>
       Making this the first true generator on the Internet. It uses a dictionary
       of over 200 Latin words, combined with a handful of model words which
-      don&apos;t look even slightly believable. If you are going to use a
-      passage vitae turpis eu ante blandit
+      don&apos;t look even slightly believable.
     </>
   ),
   list: [
-    "Kam adipiscin estibulum",
+    "Strong Social Connections",
     "Food help for african people",
-    "Kam adipiscin estibulum",
+    "Enhanced Emotional ",
     "Suport Homeless people",
     "Volenteer",
     "Donation",
@@ -118,7 +117,7 @@ const VolunteerVideo = ({ style }: any) => {
               <Image src={volunteerVideoThumb} alt="Video" />
               <a
                 className="video-play video-play--four"
-                href="https://www.youtube.com/embed/Wimkqo8gDZ0"
+                href="https://www.youtube.com/watch?v=2szQhR4oZtA&ab_channel=FamilyandCommunityServicesNSW"
                 data-effect="mfp-zoom-in"
               >
                 <i className="fa fa-play"></i>

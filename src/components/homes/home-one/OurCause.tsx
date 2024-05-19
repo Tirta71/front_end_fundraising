@@ -68,7 +68,7 @@ const OurCause = () => {
                     src={`https://tirta.site/storage/${item.thumbnail}`}
                     alt="cause"
                     style={{
-                      width: "300px",
+                      width: "100%",
                       height: "250px",
                       objectFit: "cover",
                     }}
