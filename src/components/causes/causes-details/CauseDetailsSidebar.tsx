@@ -2,6 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { fetchDonaturs, Donatur } from "@/utils/fetchDonatur";
 import userImage from "@/assets/img/about/user.jpg";
 
@@ -27,6 +29,12 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
     fetchData();
   }, [id_cause]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = donaturs
@@ -37,11 +45,11 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
 
   return (
     <div className="main-sidebar rmt-75">
-      <div className="widget widget-recent-causes">
+      <div className="widget widget-recent-causes" data-aos="fade-up">
         <h5 className="widget-title">Recent Donatur</h5>
         <ul>
           {currentItems.map((donatur) => (
-            <li key={donatur.id}>
+            <li key={donatur.id} data-aos="fade-left" data-aos-delay="100">
               <div className="image">
                 <Image src={userImage} alt="Cause" />
               </div>
@@ -54,7 +62,7 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
                 <div className="cause-price">
                   <p>{donatur.notes}</p>
                   <span
-                    className="badge bg-success "
+                    className="badge bg-success"
                     style={{
                       display: "block",
                       width: "15rem",
@@ -72,10 +80,11 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
         <ul
           className="pagination"
           style={{ display: "flex", justifyContent: "center" }}
+          data-aos="fade-up"
         >
           {donaturs
             .filter((donatur) => donatur.is_paid)
-            .map((donatur, index) => (
+            .map((_, index) => (
               <li key={index} className="page-item">
                 <a
                   style={{

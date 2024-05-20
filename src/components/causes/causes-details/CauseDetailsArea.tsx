@@ -3,6 +3,8 @@ import Image from "next/image";
 import CauseDetailsForm from "@/components/forms/CauseDetailsForm";
 import CauseDetailsSidebar from "./CauseDetailsSidebar";
 import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { fetchCauses, Cause } from "@/utils/fetchCause";
 import formatToRupiah from "@/utils/formatToRupiah";
 
@@ -27,13 +29,19 @@ const CauseDetailsArea = ({ id_cause }: CauseDetailsAreaProps) => {
     fetchData();
   }, [id_cause]);
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+    });
+  }, []);
+
   return (
-    <div className="cause-details-area py-120">
+    <div className="cause-details-area py-120" data-aos="fade-up">
       <div className="container">
         <div className="row gap-60">
           <div className="col-lg-8">
             <div className="cause-details-content">
-              <div className="details-image mb-30">
+              <div className="details-image mb-30" data-aos="fade-up">
                 {causeDetails ? (
                   <Image
                     src={`https://tirta.site/storage/${causeDetails?.thumbnail}`}
@@ -46,9 +54,11 @@ const CauseDetailsArea = ({ id_cause }: CauseDetailsAreaProps) => {
                 )}
               </div>
 
-              <h3 className="title">{causeDetails?.name || "Title"}</h3>
-              <p>{causeDetails?.about || "Description"}</p>
-              <div className="cause-price mt-30">
+              <h3 className="title" data-aos="fade-up">
+                {causeDetails?.name || "Title"}
+              </h3>
+              <p data-aos="fade-up">{causeDetails?.about || "Description"}</p>
+              <div className="cause-price mt-30" data-aos="fade-up">
                 <span>
                   Raised : {formatToRupiah(causeDetails?.totalDonations || 0)}
                 </span>
@@ -56,16 +66,18 @@ const CauseDetailsArea = ({ id_cause }: CauseDetailsAreaProps) => {
                   Goal : {formatToRupiah(causeDetails?.target_amount || 0)}
                 </span>
               </div>
-              <div className="progress">
+              <div className="progress" data-aos="fade-up">
                 <div
                   className="progress-bar progress-bar-striped progress-bar-animated"
                   style={{ width: `${causeDetails?.percentage}%` }}
                 ></div>
               </div>
             </div>
-            <CauseDetailsForm id_cause={id_cause} />
+            <div data-aos="fade-up">
+              <CauseDetailsForm id_cause={id_cause} />
+            </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4" data-aos="fade-up">
             <CauseDetailsSidebar id_cause={id_cause} />
           </div>
         </div>

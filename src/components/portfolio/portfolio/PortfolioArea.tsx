@@ -16,6 +16,7 @@ const PortfolioArea = () => {
         const response = await axios.get(`${apiUrl}fundraising-phases`);
         const data = response.data;
         setPortfolioData(data);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching portfolio data:", error);
         toast.error("Failed to fetch portfolio data");
@@ -30,7 +31,7 @@ const PortfolioArea = () => {
       <div key={item.id} className="col-xl-4 col-md-6 item">
         <div className="portfolio-item image">
           <img
-            src={`https://tirta.site/storage/${item.photo}`}
+            src={`http://tirta.site/storage/${item.photo}`}
             alt="Portfolio"
             style={{ width: "100%", height: "300px", objectFit: "cover" }}
           />
