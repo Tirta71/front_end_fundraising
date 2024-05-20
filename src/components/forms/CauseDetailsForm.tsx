@@ -9,7 +9,6 @@ import formatToRupiah from "@/utils/formatToRupiah";
 interface FormData {
   name: string;
   phoneNumber: string;
-  proof: FileList;
   notes: string;
 }
 
@@ -19,33 +18,13 @@ interface PriceDataType {
   price_title: number | string;
   check?: boolean;
 }
+
 const price_data: PriceDataType[] = [
-  {
-    id: 1,
-    price_id: "price50",
-    price_title: 50000,
-    check: true,
-  },
-  {
-    id: 2,
-    price_id: "price100",
-    price_title: 100000,
-  },
-  {
-    id: 3,
-    price_id: "price200",
-    price_title: 200000,
-  },
-  {
-    id: 4,
-    price_id: "price300",
-    price_title: 300000,
-  },
-  {
-    id: 5,
-    price_id: "price400",
-    price_title: 400000,
-  },
+  { id: 1, price_id: "price50", price_title: 50000, check: true },
+  { id: 2, price_id: "price100", price_title: 100000 },
+  { id: 3, price_id: "price200", price_title: 200000 },
+  { id: 4, price_id: "price300", price_title: 300000 },
+  { id: 5, price_id: "price400", price_title: 400000 },
 ];
 
 interface CauseDetailsFormProps {
@@ -75,43 +54,48 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
     formData.append("fundraising_id", id_cause.toString());
     formData.append("total_amount", selectedPrice || "0");
     formData.append("notes", data.notes);
-    formData.append("proof", data.proof[0]);
 
-    Swal.fire({
-      title: "Are you sure?",
-      text: "Do you want to proceed with the donation?",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, donate it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          const response = await axios.post(`${apiUrl}donaturs/add`, formData, {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          });
+    try {
+      const response = await axios.post(`${apiUrl}donaturs/add`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
-          Swal.fire({
-            title: "Donation submitted successfully",
-            text: "Thank you for your donation :)",
-            icon: "success",
-          }).then((result) => {
-            if (result.isConfirmed) {
+      const { snap_token } = response.data;
+
+      window.snap.pay(snap_token, {
+        onSuccess: async function (result: any) {
+          try {
+            await axios.post(
+              `${apiUrl}donaturs/${result.order_id}/update-payment-status`
+            );
+            toast.success("Donation successfully recorded!");
+            setTimeout(() => {
               window.location.reload();
-            }
-          });
-        } catch (error) {
-          console.error("Error:", error);
-          toast("An error occurred while submitting donation", {
-            position: "top-center",
-            type: "error",
-          });
-        }
-      }
-    });
+            }, 2000);
+          } catch (error) {
+            console.error("Error updating payment status:", error);
+            toast.error("Error updating payment status.");
+          }
+        },
+        onPending: function (result: any) {
+          console.log("Payment pending:", result);
+          toast.warning("Payment pending!");
+        },
+        onError: function (result: any) {
+          console.log("Payment error:", result);
+          toast.error("Payment error!");
+        },
+        onClose: function () {
+          console.log("Payment popup closed without finishing the payment");
+          toast.info("Payment popup closed!");
+        },
+      });
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred while submitting donation");
+    }
   };
 
   return (
@@ -120,8 +104,8 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
         <div className="col-lg-12">
           <h5>How Much Would You Like To Donate?</h5>
           <div className="custom-radio-price">
-            {price_data.slice(0, 6).map((item, index) => (
-              <div key={index} className="radio-item">
+            {price_data.map((item) => (
+              <div key={item.id} className="radio-item">
                 <input
                   type="radio"
                   name="donationPrice"
@@ -183,20 +167,6 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
             />
           </div>
         </div>
-        <div className="col-lg-12">
-          <div className="form-group">
-            <label htmlFor="proof">Proof of Payment</label>
-            <input
-              type="file"
-              id="proof"
-              {...register("proof", { required: true })}
-              className="form-control"
-            />
-            {errors.proof && (
-              <p className="form_error">Proof of Payment is required</p>
-            )}
-          </div>
-        </div>
 
         <div className="col-md-12">
           <div className="form-group pt-10 mb-0">
@@ -205,9 +175,9 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
                 <h5>Total Donation</h5>
                 <span className="price">
                   {typeof selectedPrice === "string"
-                    ? selectedPrice
+                    ? formatToRupiah(parseInt(selectedPrice))
                     : typeof selectedPrice === "number"
-                    ? `${formatToRupiah(selectedPrice)}`
+                    ? formatToRupiah(selectedPrice)
                     : price_data.find((item) => item.price_id === selectedPrice)
                         ?.price_title || "Undefined"}
                 </span>

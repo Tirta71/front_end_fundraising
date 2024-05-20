@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import "../styles/index.scss";
 import { DM_Sans, Nunito_Sans, Pacifico } from "next/font/google";
 
@@ -29,6 +30,11 @@ export default function RootLayout({
       <head>
         <meta name="description" content="Charite - Charity" />
         <link rel="icon" href="/favicon.png" sizes="any" />
+        <script
+          type="text/javascript"
+          src="https://app.sandbox.midtrans.com/snap/snap.js"
+          data-client-key="SB-Mid-client-vpgcK72WK1ew9YTZ"
+        ></script>
       </head>
       <body
         suppressHydrationWarning={true}

@@ -1,33 +1,47 @@
-"use client"
-import portfolio_data from "@/data/portfolioData";
+/* eslint-disable @next/next/no-img-element */
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
-const tab_title: string[] = ["All", "Homeless", "Clean Water", "Education", "Food & Health"];
-const portfolioCounts: number[] = [portfolio_data.length, 2, 5, 3, 3];
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const PortfolioArea = () => {
-  const [activeTab, setActiveTab] = useState(0);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const [portfolioData, setPortfolioData] = useState([]);
 
-  const handleTabClick = (index: any) => {
-    setActiveTab(index);
-  };
+  useEffect(() => {
+    const fetchPortfolioData = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}fundraising-phases`);
+        const data = response.data;
+        setPortfolioData(data);
+      } catch (error) {
+        console.error("Error fetching portfolio data:", error);
+        toast.error("Failed to fetch portfolio data");
+      }
+    };
+
+    fetchPortfolioData();
+  }, []);
 
   const renderPortfolioItems = () => {
-    const endIndex = portfolioCounts[activeTab];
-    return portfolio_data.slice(0, endIndex).map((item) => (
-      <div key={item.id} className="col-xl-4 col-md-6 item cleanWater foodHealth">
+    return portfolioData.map((item: any) => (
+      <div key={item.id} className="col-xl-4 col-md-6 item">
         <div className="portfolio-item image">
-          <Image src={item.thumb} alt="Portfolio" />
+          <img
+            src={`https://tirta.site/storage/${item.photo}`}
+            alt="Portfolio"
+            style={{ width: "100%", height: "300px", objectFit: "cover" }}
+          />
           <div className="portfolio-item__over">
-            <a className="details-btn" href="portfolio-details.html">
+            <a className="details-btn" href="#">
               <i className="flaticon-chevron"></i>
             </a>
             <h5>
-              <Link href="/portfolio-details">{item.title}</Link>
+              <Link href="#">{item.fundraising.name}</Link>
             </h5>
-            <span className="category">{item.category}</span>
+            <span className="category">{item.notes}</span>
           </div>
         </div>
       </div>
@@ -37,30 +51,8 @@ const PortfolioArea = () => {
   return (
     <div className="portfolio-page-area pt-120 pb-90 rel z-1">
       <div className="container">
-        <ul className="portfolio-filter pb-35">
-          {tab_title.map((tab, index) => (
-            <li
-              key={index}
-              onClick={() => handleTabClick(index)}
-              className={activeTab === index ? "current" : ""}
-            >
-              {tab}
-            </li>
-          ))}
-        </ul>
-        
-        <div className="tab-content">
-          {tab_title.map((_, index) => (
-            <div
-              key={index}
-              className={`tab-pane fade ${activeTab === index ? "show active" : ""}`}
-              id="description"
-            >
-              <div className="row portfolio-active justify-content-center">
-                {renderPortfolioItems()}
-              </div>
-            </div>
-          ))}
+        <div className="row portfolio-active justify-content-center">
+          {renderPortfolioItems()}
         </div>
       </div>
     </div>

@@ -32,7 +32,7 @@ const BecomeVolunteerForm = () => {
       ℹ️ **Data Volunteer:**
       👤 Nama: ${name}
       📧 Email: ${email}
-      📱 Phone: ${phone}
+      📱 Phone: ${phone}   
 
       📝 **Pesan:**
       ${message}

@@ -33,12 +33,12 @@ const menu_data: MenuItem[] = [
     id: 4,
     has_dropdown: true,
     title: "Portfolio",
-    link: "#",
-    sub_menus: [
-      { link: "/portfolio", title: "Portfolio" },
-      { link: "/portfolio-details", title: "Portfolio Details" },
-      { link: "/donate", title: "Donate" },
-    ],
+    link: "/portfolio",
+    // sub_menus: [
+    //   { link: "/portfolio", title: "Portfolio" },
+    //   // { link: "/portfolio-details", title: "Portfolio Details" },
+    //   // { link: "/donate", title: "Donate" },
+    // ],
   },
   {
     id: 5,
