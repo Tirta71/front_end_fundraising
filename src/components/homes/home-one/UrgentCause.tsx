@@ -70,7 +70,7 @@ const UrgentCause = () => {
                   connecting nonprofits, donors, and companies in nearly every
                   country. We help nonprofits from
                 </p>
-                <Link className="cr-btn ml-5 mt-35" href="#">
+                <Link className="cr-btn ml-5 mt-35" href="/causes">
                   View All causes
                 </Link>
               </div>

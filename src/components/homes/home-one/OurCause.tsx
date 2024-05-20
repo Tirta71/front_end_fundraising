@@ -45,10 +45,7 @@ const OurCause = () => {
                 <h3>
                   Our <span>Latest Causes</span>
                 </h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
-                  autem voluptatem obcaecati consectetur adipisicing
-                </p>
+                <p>This is the latest cause that has been added by volunteer</p>
               </div>
             </div>
           </div>
