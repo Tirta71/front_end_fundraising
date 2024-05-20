@@ -64,7 +64,7 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
 
       const { snap_token } = response.data;
 
-      snaping.pay(snap_token, {
+      window.snap.pay(snap_token, {
         onSuccess: async function (result: any) {
           try {
             await axios.post(
