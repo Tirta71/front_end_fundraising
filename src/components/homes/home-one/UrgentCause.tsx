@@ -90,7 +90,7 @@ const UrgentCause = () => {
                     src={`https://tirta.site/storage/${cause.thumbnail}`}
                     alt="cause"
                     style={{
-                      width: "300px",
+                      width: "100%",
                       height: "242px",
                       objectFit: "cover",
                     }}
