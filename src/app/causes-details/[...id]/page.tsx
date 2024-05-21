@@ -7,7 +7,7 @@ import HeaderOne from "@/layout/headers/HeaderOne";
 import { fetchCauses } from "@/utils/fetchCause";
 
 export const metadata = {
-  title: "Cause Details Charite - Charity & Donation React Next js Template",
+  title: "Cause Details Charite - Charity ",
 };
 const index = ({ params }: { params: { id: number } }) => {
   const id_cause = Number(params.id);

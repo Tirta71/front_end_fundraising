@@ -2,14 +2,14 @@ import Volunteers from "@/components/inner-pages/volunteers";
 import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {
-   title: "Volunteers Charite - Charity & Donation React Next js Template",
+  title: "Volunteers Charite - Charity ",
 };
 const index = () => {
-   return (
-      <Wrapper>
-         <Volunteers />
-      </Wrapper>
-   )
-}
+  return (
+    <Wrapper>
+      <Volunteers />
+    </Wrapper>
+  );
+};
 
-export default index
+export default index;
