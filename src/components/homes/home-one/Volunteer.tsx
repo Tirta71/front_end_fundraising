@@ -38,7 +38,7 @@ const Volunteer: React.FC<VolunteerProps> = ({ style }) => {
           .map((item: any) => ({
             id: item.id,
             name: item.user.name,
-            thumb: `http://tirta.site/storage/${item.user.avatar}`,
+            thumb: `https://tirta.site/storage/${item.user.avatar}`,
             page: "home_1",
             item_bg: "bg-color",
           }));
