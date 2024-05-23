@@ -25,6 +25,7 @@ const price_data: PriceDataType[] = [
   { id: 3, price_id: "price200", price_title: 200000 },
   { id: 4, price_id: "price300", price_title: 300000 },
   { id: 5, price_id: "price400", price_title: 400000 },
+  { id: 6, price_id: "price500", price_title: 500000 },
 ];
 
 interface CauseDetailsFormProps {
@@ -57,44 +58,46 @@ const CauseDetailsForm = ({ id_cause }: CauseDetailsFormProps) => {
 
     try {
       const response = await axios.post(`${apiUrl}donaturs/add`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
+        headers: { "Content-Type": "multipart/form-data" },
       });
 
-      const { snap_token } = response.data;
-      // snap from midtrans
+      const { snap_token, transaction_id } = response.data;
+
       window.snap.pay(snap_token, {
-        onSuccess: async function (result: any) {
-          try {
-            await axios.post(
-              `${apiUrl}donaturs/${result.order_id}/update-payment-status`
-            );
-            toast.success("Donation successfully recorded!");
-            setTimeout(() => {
-              window.location.reload();
-            }, 2000);
-          } catch (error) {
-            console.error("Error updating payment status:", error);
-            toast.error("Error updating payment status.");
-          }
+        onSuccess: async (result: any) => {
+          const paymentDetails = {
+            transaction_id,
+            transaction_status: "success",
+            order_id: result.order_id,
+            fundraising_id: id_cause,
+            gross_amount: selectedPrice,
+            customer_details: {
+              first_name: data.name,
+              phone: data.phoneNumber,
+            },
+            notes: data.notes,
+          };
+
+          await axios.post(`${apiUrl}payment/notification`, paymentDetails);
+          toast.success("Donation successfully recorded!");
+          setTimeout(() => window.location.reload(), 2000);
         },
-        onPending: function (result: any) {
+        onPending: (result: any) => {
           console.log("Payment pending:", result);
           toast.warning("Payment pending!");
         },
-        onError: function (result: any) {
+        onError: (result: any) => {
           console.log("Payment error:", result);
           toast.error("Payment error!");
         },
-        onClose: function () {
+        onClose: () => {
           console.log("Payment popup closed without finishing the payment");
           toast.info("Payment popup closed!");
         },
       });
     } catch (error) {
-      console.error("Error:", error);
-      toast.error("An error occurred while submitting donation");
+      console.error("Error initiating payment:", error);
+      toast.error("An error occurred while initiating the payment");
     }
   };
 

@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -27,13 +26,8 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
     };
 
     fetchData();
+    AOS.init({ duration: 1000 });
   }, [id_cause]);
-
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-    });
-  }, []);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -41,7 +35,12 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
     .filter((donatur) => donatur.is_paid)
     .slice(indexOfFirstItem, indexOfLastItem);
 
-  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+  const totalItems = donaturs.filter((donatur) => donatur.is_paid).length;
+  const pageNumbers = [];
+
+  for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="main-sidebar rmt-75">
@@ -63,10 +62,7 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
                   <p>{donatur.notes}</p>
                   <span
                     className="badge bg-success"
-                    style={{
-                      display: "block",
-                      width: "15rem",
-                    }}
+                    style={{ display: "block", width: "15rem" }}
                   >
                     Approved
                   </span>
@@ -76,35 +72,32 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
           ))}
         </ul>
       </div>
-      {donaturs.filter((donatur) => donatur.is_paid).length > itemsPerPage && (
+      {pageNumbers.length > 1 && (
         <ul
           className="pagination"
           style={{ display: "flex", justifyContent: "center" }}
           data-aos="fade-up"
         >
-          {donaturs
-            .filter((donatur) => donatur.is_paid)
-            .map((_, index) => (
-              <li key={index} className="page-item">
-                <a
-                  style={{
-                    display: "inline-block",
-                    padding: "5px 10px",
-                    margin: "0 5px",
-                    border: "1px solid #ccc",
-                    borderRadius: "5px",
-                    backgroundColor:
-                      currentPage === index + 1 ? "#F84D42" : "#fff",
-                    color: currentPage === index + 1 ? "#fff" : "#333",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => paginate(index + 1)}
-                >
-                  {index + 1}
-                </a>
-              </li>
-            ))}
+          {pageNumbers.map((number) => (
+            <li key={number} className="page-item">
+              <a
+                style={{
+                  display: "inline-block",
+                  padding: "5px 10px",
+                  margin: "0 5px",
+                  border: "1px solid #ccc",
+                  borderRadius: "5px",
+                  backgroundColor: currentPage === number ? "#F84D42" : "#fff",
+                  color: currentPage === number ? "#fff" : "#333",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+                onClick={() => setCurrentPage(number)}
+              >
+                {number}
+              </a>
+            </li>
+          ))}
         </ul>
       )}
     </div>
