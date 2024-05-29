@@ -11,13 +11,14 @@ import causeShape_3 from "@/assets/img/shapes/circle-with-line-green.png";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { baseUrl } from "@/utils/baseUrl";
 
 const UrgentCause = () => {
   const [causes, setCauses] = useState<Cause[]>([]);
 
   useEffect(() => {
     AOS.init({
-      duration: 1500, // Durasi animasi dalam milidetik
+      duration: 1500,
     });
   }, []);
 
@@ -27,7 +28,7 @@ const UrgentCause = () => {
         const fetchedCauses = await fetchCauses();
 
         const filteredCauses = fetchedCauses.filter(
-          (cause) => cause.totalDonations >= 500000
+          (cause) => cause.totalDonations >= 0
         );
         setCauses(filteredCauses.slice(0, 3));
       } catch (error) {
@@ -87,7 +88,7 @@ const UrgentCause = () => {
               <div className="cause-item">
                 <div className="image">
                   <img
-                    src={`https://tirta.site/storage/${cause.thumbnail}`}
+                    src={`${baseUrl}/storage/${cause.thumbnail}`}
                     alt="cause"
                     style={{
                       width: "100%",

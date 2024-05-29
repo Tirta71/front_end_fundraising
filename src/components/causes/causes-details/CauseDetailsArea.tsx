@@ -7,6 +7,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { fetchCauses, Cause } from "@/utils/fetchCause";
 import formatToRupiah from "@/utils/formatToRupiah";
+import { baseUrl } from "@/utils/baseUrl";
 
 interface CauseDetailsAreaProps {
   id_cause: number;
@@ -44,7 +45,7 @@ const CauseDetailsArea = ({ id_cause }: CauseDetailsAreaProps) => {
               <div className="details-image mb-30" data-aos="fade-up">
                 {causeDetails ? (
                   <Image
-                    src={`https://tirta.site/storage/${causeDetails?.thumbnail}`}
+                    src={`${baseUrl}/storage/${causeDetails?.thumbnail}`}
                     alt="image"
                     width={800}
                     height={600}

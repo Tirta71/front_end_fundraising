@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { baseUrl } from "@/utils/baseUrl";
 
 const PortfolioArea = () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
@@ -31,7 +32,7 @@ const PortfolioArea = () => {
       <div key={item.id} className="col-xl-4 col-md-6 item">
         <div className="portfolio-item image">
           <img
-            src={`http://tirta.site/storage/${item.photo}`}
+            src={`${baseUrl}/storage/${item.photo}`}
             alt="Portfolio"
             style={{ width: "100%", height: "300px", objectFit: "cover" }}
           />

@@ -6,6 +6,7 @@ import { fetchCauses, Cause } from "@/utils/fetchCause";
 import formatToRupiah from "@/utils/formatToRupiah";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { baseUrl } from "@/utils/baseUrl";
 
 const OurCause = () => {
   const [causes, setCauses] = useState<Cause[]>([]);
@@ -62,7 +63,7 @@ const OurCause = () => {
               <div className="cause-item">
                 <div className="image">
                   <img
-                    src={`https://tirta.site/storage/${item.thumbnail}`}
+                    src={`${baseUrl}/storage/${item.thumbnail}`}
                     alt="cause"
                     style={{
                       width: "100%",

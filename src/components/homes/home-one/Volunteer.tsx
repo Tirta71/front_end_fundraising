@@ -6,6 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { baseUrl } from "@/utils/baseUrl";
 
 import volunteerShape_1 from "@/assets/img/shapes/hand-glass.png";
 import volunteerShape_2 from "@/assets/img/shapes/circle-with-line-red.png";
@@ -38,7 +39,7 @@ const Volunteer: React.FC<VolunteerProps> = ({ style }) => {
           .map((item: any) => ({
             id: item.id,
             name: item.user.name,
-            thumb: `https://tirta.site/storage/${item.user.avatar}`,
+            thumb: `${baseUrl}/storage/${item.user.avatar}`,
             page: "home_1",
             item_bg: "bg-color",
           }));

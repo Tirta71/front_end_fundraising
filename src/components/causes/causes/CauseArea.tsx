@@ -5,8 +5,8 @@ import Link from "next/link";
 import CircleProgress from "@/hooks/Circular";
 import { useEffect, useState } from "react";
 import { fetchCauses, Cause } from "@/utils/fetchCause";
-import cause_data from "@/data/causeData";
 import formatToRupiah from "@/utils/formatToRupiah";
+import { baseUrl } from "@/utils/baseUrl";
 
 type MergedCause = Cause & {
   item_bg?: string;
@@ -21,32 +21,25 @@ type MergedCause = Cause & {
 
 const CauseArea = () => {
   const [causes, setCauses] = useState<MergedCause[]>([]);
-  const [mergedCauses, setMergedCauses] = useState<MergedCause[]>([]);
 
   useEffect(() => {
-    const fetchAndMergeCauses = async () => {
+    const fetchAndSetCauses = async () => {
       const activeCauses = await fetchCauses();
-      const merged = activeCauses.map((cause) => {
-        const additionalData =
-          cause_data.find((item) => item.id === cause.id) || {};
-        return { ...cause, ...additionalData };
-      });
-      setCauses(merged);
-      setMergedCauses(merged);
+      setCauses(activeCauses);
     };
 
-    fetchAndMergeCauses();
+    fetchAndSetCauses();
   }, []);
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = mergedCauses.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(mergedCauses.length / itemsPerPage);
+  const currentItems = causes.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(causes.length / itemsPerPage);
 
   // Calculate total number of pages
-  const totalPages = Math.ceil(mergedCauses.length / itemsPerPage);
+  const totalPages = Math.ceil(causes.length / itemsPerPage);
 
   // Generate an array of page numbers
   const pageNumbers = Array.from(
@@ -96,7 +89,7 @@ const CauseArea = () => {
                 <div className={`cause-two-item ${item.item_bg}`}>
                   <div className="image">
                     <img
-                      src={`https://tirta.site/storage/${item.thumbnail}`}
+                      src={`${baseUrl}/storage/${item.thumbnail}`}
                       alt="cause_image"
                       style={{
                         width: "100%",
@@ -107,7 +100,7 @@ const CauseArea = () => {
                   </div>
                   <div className="content">
                     <div className={`circle-progresss ${item.progress_bg}`}>
-                      <div className="chart" data-percent="65">
+                      <div className="chart" data-percent={item.percentage}>
                         <span>
                           <CircleProgress finish={item.percentage} />
                         </span>
@@ -120,10 +113,9 @@ const CauseArea = () => {
                     </h4>
                     <div className="cause-price cause-price--green">
                       <span>{formatToRupiah(item.totalDonations)}</span>
-
                       <span>{formatToRupiah(item.target_amount)}</span>
                     </div>
-                    <p> {item.about}</p>
+                    <p>{item.about}</p>
                     <div className="cause-btn">
                       <Link
                         className={`cr-btn ${item.btn_bg}`}
