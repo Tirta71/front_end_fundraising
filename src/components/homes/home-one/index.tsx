@@ -3,7 +3,6 @@ import HeaderOne from "@/layout/headers/HeaderOne";
 import HeroArea from "./HeroArea";
 import UrgentCause from "./UrgentCause";
 import ChooseArea from "./ChooseArea";
-import OurCause from "./OurCause";
 import Event from "./Event";
 import Volunteer from "./Volunteer";
 import CtaArea from "./CtaArea";
@@ -20,7 +19,7 @@ const HomeOne = () => {
         <UrgentCause />
 
         <ChooseArea />
-        <OurCause />
+
         <Features />
         <Event />
 

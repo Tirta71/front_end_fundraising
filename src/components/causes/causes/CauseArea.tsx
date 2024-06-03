@@ -1,12 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import CircleProgress from "@/hooks/Circular";
 import { useEffect, useState } from "react";
 import { fetchCauses, Cause } from "@/utils/fetchCause";
 import formatToRupiah from "@/utils/formatToRupiah";
 import { baseUrl } from "@/utils/baseUrl";
+
+interface Category {
+  id: number;
+  name: string;
+}
 
 type MergedCause = Cause & {
   item_bg?: string;
@@ -17,29 +21,61 @@ type MergedCause = Cause & {
   raised?: number;
   goal?: number;
   title?: string;
+  category: Category;
 };
 
 const CauseArea = () => {
   const [causes, setCauses] = useState<MergedCause[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [filteredCauses, setFilteredCauses] = useState<MergedCause[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   useEffect(() => {
     const fetchAndSetCauses = async () => {
       const activeCauses = await fetchCauses();
-      setCauses(activeCauses);
+      setCauses(activeCauses as MergedCause[]);
+
+      // Extract categories from causes
+      const uniqueCategories = Array.from(
+        new Set(activeCauses.map((cause) => cause.category.id))
+      )
+        .map((id) => {
+          const category = activeCauses.find(
+            (cause) => cause.category.id === id
+          )?.category;
+          return category ? { id: category.id, name: category.name } : null;
+        })
+        .filter((category) => category !== null) as Category[];
+
+      setCategories(uniqueCategories);
     };
 
     fetchAndSetCauses();
   }, []);
 
+  useEffect(() => {
+    if (selectedCategory === "all") {
+      setFilteredCauses(causes);
+    } else {
+      setFilteredCauses(
+        causes.filter((cause) => cause.category.id === Number(selectedCategory))
+      );
+    }
+  }, [selectedCategory, causes]);
+
+  const handleCategoryClick = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+  };
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
   const [itemOffset, setItemOffset] = useState(0);
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = causes.slice(itemOffset, endOffset);
-  const pageCount = Math.ceil(causes.length / itemsPerPage);
+  const currentItems = filteredCauses.slice(itemOffset, endOffset);
+  const pageCount = Math.ceil(filteredCauses.length / itemsPerPage);
 
   // Calculate total number of pages
-  const totalPages = Math.ceil(causes.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredCauses.length / itemsPerPage);
 
   // Generate an array of page numbers
   const pageNumbers = Array.from(
@@ -80,6 +116,36 @@ const CauseArea = () => {
   return (
     <div className="our-cause-page py-120 rel z-1">
       <div className="container">
+        <div className="row justify-content-center mb-4">
+          <div className="col-xl-8 col-lg-10 col-md-12">
+            <div className="category-filter-buttons text-center">
+              <button
+                className={`btn mx-2 ${
+                  selectedCategory === "all"
+                    ? "btn-danger"
+                    : "btn-outline-danger"
+                }`}
+                onClick={() => handleCategoryClick("all")}
+              >
+                All Categories
+              </button>
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  className={`btn mx-2 ${
+                    selectedCategory === category.id.toString()
+                      ? "btn-danger"
+                      : "btn-outline-danger"
+                  }`}
+                  onClick={() => handleCategoryClick(category.id.toString())}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <div className="row justify-content-center">
           {currentItems.length === 0 ? (
             <p>Belum ada data yang ditambahkan</p>
