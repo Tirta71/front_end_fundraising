@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { fetchCauses, Cause } from "@/utils/fetchCause";
 import formatToRupiah from "@/utils/formatToRupiah";
 import { baseUrl } from "@/utils/baseUrl";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 interface Category {
   id: number;
@@ -29,6 +31,13 @@ const CauseArea = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [filteredCauses, setFilteredCauses] = useState<MergedCause[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      delay: 200,
+    });
+  }, []);
 
   useEffect(() => {
     const fetchAndSetCauses = async () => {
@@ -150,8 +159,13 @@ const CauseArea = () => {
           {currentItems.length === 0 ? (
             <p>Belum ada data yang ditambahkan</p>
           ) : (
-            currentItems.map((item) => (
-              <div key={item.id} className="col-xl-4 col-md-6">
+            currentItems.map((item, index) => (
+              <div
+                key={item.id}
+                className="col-xl-4 col-md-6"
+                data-aos="fade-up"
+                data-aos-delay={(index % 3) * 100} // Adds delay to each card
+              >
                 <div className={`cause-two-item ${item.item_bg}`}>
                   <div className="image">
                     <img
