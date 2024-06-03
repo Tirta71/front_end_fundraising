@@ -3,16 +3,11 @@
 import Link from "next/link";
 import CircleProgress from "@/hooks/Circular";
 import { useEffect, useState } from "react";
-import { fetchCauses, Cause } from "@/utils/fetchCause";
+import { fetchCauses, Cause, Category } from "@/utils/fetchCause";
 import formatToRupiah from "@/utils/formatToRupiah";
 import { baseUrl } from "@/utils/baseUrl";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
-interface Category {
-  id: number;
-  name: string;
-}
 
 type MergedCause = Cause & {
   item_bg?: string;
@@ -23,7 +18,6 @@ type MergedCause = Cause & {
   raised?: number;
   goal?: number;
   title?: string;
-  category: Category;
 };
 
 const CauseArea = () => {

@@ -1,4 +1,10 @@
+// utils/fetchCause.ts
 import axios from "axios";
+
+export interface Category {
+  id: number;
+  name: string;
+}
 
 export interface Cause {
   page: string;
@@ -11,6 +17,7 @@ export interface Cause {
   percentage: number;
   is_active: number;
   has_finished: number;
+  category: Category; // Tambahkan properti category
 }
 
 export const fetchCauses = async (): Promise<Cause[]> => {
