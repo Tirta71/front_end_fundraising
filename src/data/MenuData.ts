@@ -47,7 +47,7 @@ const menu_data: MenuItem[] = [
     link: "#",
     sub_menus: [
       // { link: "/about", title: "About Us" },
-      { link: "/contact", title: "Contact Us" },
+      // { link: "/contact", title: "Contact Us" },
       { link: "/volunteers", title: "Volunteers" },
       { link: "/become-volunteers", title: "Become Volunteer" },
       { link: "/faqs", title: "FAQ Page" },

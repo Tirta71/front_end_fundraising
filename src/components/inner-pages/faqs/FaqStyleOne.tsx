@@ -13,10 +13,7 @@ const FaqStyleOne = () => {
               <h2>
                 Popular <span>Question</span> About us
               </h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem
-                autem voluptatem obcaecati consectetur adipisicing
-              </p>
+              <p>This is the most popular question frequently asked</p>
             </div>
           </div>
         </div>
