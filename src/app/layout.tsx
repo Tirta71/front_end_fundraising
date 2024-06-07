@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="description" content="DonasiPedia" />
-        <link rel="icon" href="/favicon.png" sizes="any" />
+        <link rel="icon" href="/favicon_1.png" sizes="any" />
         <script
           type="text/javascript"
           src="https://app.sandbox.midtrans.com/snap/snap.js"

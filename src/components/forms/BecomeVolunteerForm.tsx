@@ -3,18 +3,19 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const schema = yup.object({
   name: yup.string().required().label("Name"),
   email: yup.string().required().email().label("Email"),
-  phone: yup
-    .string()
-    .matches(/^[0-9]+$/, "Phone number must contain only digits")
-    .required("Phone number is required"),
-  message: yup.string().required().label("Message"),
+  avatar: yup.mixed().required("Avatar is required"),
+  password: yup.string().required().min(8).label("Password"),
 });
 
 const BecomeVolunteerForm = () => {
+  const [avatarPreview, setAvatarPreview] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -24,28 +25,56 @@ const BecomeVolunteerForm = () => {
     resolver: yupResolver(schema),
   });
 
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const onSubmit = async (data: any) => {
-    const { name, email, phone, message } = data;
-    const formattedMessage = `
-      🌟 Mau menjadi volunteer dong kak! 🌟
-
-      ℹ️ **Data Volunteer:**
-      👤 Nama: ${name}
-      📧 Email: ${email}
-      📱 Phone: ${phone}   
-
-      📝 **Pesan:**
-      ${message}
-      `;
+    const { name, email, avatar, password } = data;
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("avatar", avatar[0]);
+    formData.append("password", password);
 
     try {
-      const url = `https://wa.me/6281284964533?text=${encodeURIComponent(
-        formattedMessage
-      )}`;
-      window.open(url, "_blank");
+      const response = await axios.post(`${apiUrl}register`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      Swal.fire({
+        title: "Success!",
+        text: "Data Berhasil Dikirim \n Anda Bisa langsung login pada situs kami akan tetapi belum bisa membuat campaign karena membutuhkan verifikasi oleh admin terlebih dahulu",
+        icon: "success",
+        confirmButtonText: "LOGIN",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "https://tirta.site";
+        }
+      });
       reset();
+      setAvatarPreview(null);
     } catch (error) {
-      console.error("Error sending message: ", error);
+      console.error("Error registering user: ", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Mohon Lengkapi Semua datanya",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    }
+  };
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAvatarPreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setAvatarPreview(null);
     }
   };
 
@@ -53,7 +82,7 @@ const BecomeVolunteerForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="volunteer-form">
       <div className="row">
         <div className="col-xl-9 mb-10">
-          <p>fill out the following form to become a volunteer</p>
+          <p>Fill out the following form to become a volunteer</p>
         </div>
         <div className="col-sm-6">
           <div className="form-group">
@@ -83,39 +112,37 @@ const BecomeVolunteerForm = () => {
         </div>
         <div className="col-sm-6">
           <div className="form-group">
-            <label htmlFor="phone_number">Phone Number</label>
+            <label htmlFor="avatar">Avatar</label>
             <input
-              type="text"
-              id="phone_number"
-              {...register("phone")}
+              type="file"
+              id="avatar"
+              {...register("avatar")}
               className="form-control"
-              placeholder="Phone Number"
+              onChange={handleAvatarChange}
             />
-            <p className="form_error">{errors.phone?.message}</p>
+            <p className="form_error">{errors.avatar?.message}</p>
+            {avatarPreview && (
+              <div className="avatar-preview mt-3">
+                <img
+                  src={avatarPreview}
+                  alt="Avatar Preview"
+                  className="img-thumbnail"
+                />
+              </div>
+            )}
           </div>
         </div>
         <div className="col-sm-6">
           <div className="form-group">
-            <label htmlFor="birth-day">Date Of Birth</label>
+            <label htmlFor="password">Password</label>
             <input
-              type="date"
-              id="birth-day"
-              name="birth-day"
+              type="password"
+              id="password"
+              {...register("password")}
               className="form-control"
+              placeholder="Password"
             />
-          </div>
-        </div>
-        <div className="col-md-12">
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              {...register("message")}
-              className="form-control"
-              rows={3}
-              placeholder="Write Your Messages"
-            ></textarea>
-            <p className="form_error">{errors.message?.message}</p>
+            <p className="form_error">{errors.password?.message}</p>
           </div>
         </div>
         <div className="col-md-12">
@@ -126,6 +153,13 @@ const BecomeVolunteerForm = () => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .avatar-preview img {
+          max-width: 100px;
+          height: auto;
+          border-radius: 50%;
+        }
+      `}</style>
     </form>
   );
 };
