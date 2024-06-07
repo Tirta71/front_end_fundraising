@@ -105,8 +105,12 @@ const UrgentCause = () => {
                   </h5>
 
                   <div className="cause-price">
-                    <span> {formatToRupiah(cause.totalDonations)}</span>
-                    <span>{formatToRupiah(cause.target_amount)}</span>
+                    <span>
+                      Terkumpul
+                      <span className="text-info px-2">
+                        {formatToRupiah(cause.totalDonations)}
+                      </span>
+                    </span>
                   </div>
                   <div className="progress">
                     <div
