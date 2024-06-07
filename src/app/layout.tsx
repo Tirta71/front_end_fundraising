@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="description" content="Charite - Charity" />
+        <meta name="description" content="DonasiPedia" />
         <link rel="icon" href="/favicon.png" sizes="any" />
         <script
           type="text/javascript"

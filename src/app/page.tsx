@@ -2,7 +2,7 @@ import HomeOne from "@/components/homes/home-one";
 import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {
-  title: "Charite - Charity ",
+  title: "DonasiPedia",
 };
 const index = () => {
   return (

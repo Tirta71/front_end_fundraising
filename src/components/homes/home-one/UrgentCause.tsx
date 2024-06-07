@@ -46,7 +46,7 @@ const UrgentCause = () => {
         backgroundImage: `url(/assets/img/background/banner-charity.jpg)`,
       }}
     >
-      <div className="container container-1370">
+      <div className="container container-1370 ">
         <div className="row gap-40">
           {causes.length === 0 ? (
             <div className="section-title text-center mb-50">
@@ -81,7 +81,7 @@ const UrgentCause = () => {
           {causes.map((cause, index) => (
             <div
               key={cause.id}
-              className="col-xl-3 col-md-6"
+              className="col-xl-3 col-md-6  "
               data-aos="fade-up"
               data-aos-delay={`${(index + 1) * 200}`}
             >
@@ -97,13 +97,13 @@ const UrgentCause = () => {
                     }}
                   />
                 </div>
-                <div className="content">
+                <div className="content ">
                   <h5>
                     <Link href={`/causes-details/${cause.id}`}>
                       {cause.name}
                     </Link>
                   </h5>
-                  <p>{cause.about}</p>
+
                   <div className="cause-price">
                     <span> {formatToRupiah(cause.totalDonations)}</span>
                     <span>{formatToRupiah(cause.target_amount)}</span>

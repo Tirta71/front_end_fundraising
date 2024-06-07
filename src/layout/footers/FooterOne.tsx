@@ -3,8 +3,6 @@ import Link from "next/link";
 import SocialIcon from "@/components/common/SocialIcon";
 import footer_data from "@/data/footerData";
 
-import logo_1 from "@/assets/img/logos/logo-white.png";
-
 import footerGallery_1 from "@/assets/img/footer/gallery1.jpg";
 import footerGallery_2 from "@/assets/img/footer/gallery2.jpg";
 import footerGallery_3 from "@/assets/img/footer/gallery3.jpg";
@@ -41,11 +39,6 @@ const FooterOne = () => {
         <div className="row justify-content-between">
           <div className="col-lg-3 col-md-6 col-sm-8">
             <div className="widget widget_about">
-              <div className="logo_footer mb-25">
-                <Link href="/">
-                  <Image src={logo_1} alt="Logo" />
-                </Link>
-              </div>
               <p>{footer_about_text}</p>
             </div>
           </div>

@@ -3,6 +3,9 @@
 import Link from "next/link";
 import Slider from "react-slick";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import features_data from "@/data/featuresData";
 
 import featureShape from "@/assets/img/shapes/three-round-green.png";
@@ -70,6 +73,10 @@ const Features = () => {
     ],
   };
 
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
   return (
     <div
       className="features-area rel bgs-cover z-1"
@@ -86,6 +93,7 @@ const Features = () => {
               style={{
                 backgroundImage: `url(/assets/img/background/feature-slider-bg.jpg)`,
               }}
+              data-aos="fade-right"
             >
               <Slider
                 {...single_slider_settings}
@@ -109,7 +117,7 @@ const Features = () => {
           </div>
 
           <div className="col-xl-9">
-            <div className="feature-content">
+            <div className="feature-content" data-aos="fade-left">
               <div className="row justify-content-between">
                 <div className="col-lg-8">
                   <div className="section-title mb-35">
@@ -133,7 +141,7 @@ const Features = () => {
                 {features_data
                   .filter((item) => item.page === "home_1")
                   .map((item) => (
-                    <div key={item.id} className="col-lg-4">
+                    <div key={item.id} className="col-lg-4" data-aos="zoom-in">
                       <div className="feature-item">
                         <div className={`feature-item__icon ${item.icon_bg}`}>
                           <i className={item.icon_name}></i>
@@ -150,7 +158,7 @@ const Features = () => {
           </div>
         </div>
       </div>
-      <div className="feature-shapes">
+      <div className="feature-shapes" data-aos="fade-up">
         <Image
           className="one right_image_bounce"
           src={featureShape}
