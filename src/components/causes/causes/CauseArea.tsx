@@ -180,7 +180,7 @@ const CauseArea = () => {
                         </span>
                       </div>
                     </div>
-                    <h4>
+                    <h4 className="fa-1x">
                       <Link href={`/causes-details/${item.id}`}>
                         {item.name}
                       </Link>
@@ -189,7 +189,7 @@ const CauseArea = () => {
                       <span>{formatToRupiah(item.totalDonations)}</span>
                       <span>{formatToRupiah(item.target_amount)}</span>
                     </div>
-                    <p>{item.about}</p>
+
                     <div className="cause-btn">
                       <Link
                         className={`cr-btn ${item.btn_bg}`}

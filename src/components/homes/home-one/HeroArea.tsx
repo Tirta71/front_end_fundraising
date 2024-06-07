@@ -23,10 +23,9 @@ const HeroArea = () => {
             </Link>
             <Link
               className="cr-btn btn--yellow btn--style-two"
-              href="https://wa.me/6281284964533"
-              target="_blank"
+              href="/become-volunteers"
             >
-              Contact us
+              Become Volunteer
             </Link>
           </div>
         </div>

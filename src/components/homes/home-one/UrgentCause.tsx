@@ -98,7 +98,7 @@ const UrgentCause = () => {
                   />
                 </div>
                 <div className="content ">
-                  <h5>
+                  <h5 className="fs-6">
                     <Link href={`/causes-details/${cause.id}`}>
                       {cause.name}
                     </Link>
