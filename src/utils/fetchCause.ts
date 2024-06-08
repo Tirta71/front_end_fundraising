@@ -17,6 +17,12 @@ export interface Cause {
   percentage: number;
   is_active: number;
   has_finished: number;
+  fundraiser_name: string;
+  fundraiser: {
+    name: string;
+    avatar: string;
+    email: string;
+  };
   category: Category; // Tambahkan properti category
 }
 

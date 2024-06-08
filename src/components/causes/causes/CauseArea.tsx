@@ -180,14 +180,28 @@ const CauseArea = () => {
                         </span>
                       </div>
                     </div>
-                    <h4 className="fa-1x">
+                    <div className="d-flex align-content-end gap-2 position-relative mb-5 ">
+                      <div className="position-absolute end-0">
+                        <strong className="fs-5">
+                          {item.fundraiser_name}{" "}
+                        </strong>
+                        <i className="fas fa-check-circle text-info ml-2"></i>
+                      </div>
+                    </div>
+                    <h4 className="fs-5">
                       <Link href={`/causes-details/${item.id}`}>
                         {item.name}
                       </Link>
                     </h4>
-                    <div className="cause-price cause-price--green">
-                      <span>{formatToRupiah(item.totalDonations)}</span>
-                      <span>{formatToRupiah(item.target_amount)}</span>
+                    <div className="cause-price cause-price--green ">
+                      <div className="d-flex flex-column">
+                        <span className="text-secondary">Raised</span>
+                        <span>{formatToRupiah(item.totalDonations)}</span>
+                      </div>
+                      <div className="d-flex flex-column">
+                        <span className="text-secondary">Goal</span>
+                        <span>{formatToRupiah(item.target_amount)}</span>
+                      </div>
                     </div>
 
                     <div className="cause-btn">

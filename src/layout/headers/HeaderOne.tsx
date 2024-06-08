@@ -70,20 +70,12 @@ const HeaderOne = ({ style_1, style_2 }: any) => {
             <NavMenu />
           </div>
           <div className="nav-right-part nav-right-part-desktop">
-            <a style={{ cursor: "pointer" }} className="search-bar-btn">
-              <i
-                onClick={() => setIsSearch(true)}
-                className="flaticon-magnifying-glass"
-              ></i>
-            </a>
-
             <Link className="cr-btn btn--style-two" href="/causes">
               Donate Now
             </Link>
           </div>
         </div>
       </nav>
-      <HeaderSearch isSearch={isSearch} setIsSearch={setIsSearch} />
     </>
   );
 };

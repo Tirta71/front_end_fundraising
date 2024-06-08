@@ -28,7 +28,7 @@ const UrgentCause = () => {
         const fetchedCauses = await fetchCauses();
 
         const filteredCauses = fetchedCauses.filter(
-          (cause) => cause.totalDonations >= 0
+          (cause) => cause.percentage < 100
         );
         setCauses(filteredCauses.slice(0, 3));
       } catch (error) {
@@ -81,7 +81,7 @@ const UrgentCause = () => {
           {causes.map((cause, index) => (
             <div
               key={cause.id}
-              className="col-xl-3 col-md-6  "
+              className="col-xl-3 col-md-6"
               data-aos="fade-up"
               data-aos-delay={`${(index + 1) * 200}`}
             >
@@ -97,7 +97,14 @@ const UrgentCause = () => {
                     }}
                   />
                 </div>
-                <div className="content ">
+
+                <div className="content">
+                  <p className="d-flex align-content-end gap-2 position-relative mb-5">
+                    <div className="position-absolute end-0">
+                      <strong> {cause.fundraiser_name} </strong>
+                      <i className="fas fa-check-circle text-info ml-2"></i>
+                    </div>
+                  </p>
                   <h5 className="fs-6">
                     <Link href={`/causes-details/${cause.id}`}>
                       {cause.name}
@@ -112,6 +119,7 @@ const UrgentCause = () => {
                       </span>
                     </span>
                   </div>
+
                   <div className="progress">
                     <div
                       className={`progress-bar progress-bar-striped progress-bar-animated ${

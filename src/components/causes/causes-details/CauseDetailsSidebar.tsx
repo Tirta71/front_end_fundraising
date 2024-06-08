@@ -44,34 +44,39 @@ const CauseDetailsSidebar = ({ id_cause }: CauseDetailsSidebarProps) => {
 
   return (
     <div className="main-sidebar rmt-75">
-      <div className="widget widget-recent-causes" data-aos="fade-up">
-        <h5 className="widget-title">Recent Donatur</h5>
-        <ul>
-          {currentItems.map((donatur) => (
-            <li key={donatur.id} data-aos="fade-left" data-aos-delay="100">
-              <div className="image">
-                <Image src={userImage} alt="Cause" />
-              </div>
-              <div className="content">
-                <h6>
-                  <Link href={`/causes-details/${donatur.fundraising_id}`}>
-                    {donatur.name}
-                  </Link>
-                </h6>
-                <div className="cause-price">
-                  <p>{donatur.notes}</p>
-                  <span
-                    className="badge bg-success"
-                    style={{ display: "block", width: "15rem" }}
-                  >
-                    Approved
-                  </span>
+      {currentItems.length > 0 ? (
+        <div className="widget widget-recent-causes" data-aos="fade-up">
+          <h5 className="widget-title">Recent Donatur</h5>
+          <ul>
+            {currentItems.map((donatur) => (
+              <li key={donatur.id} data-aos="fade-left" data-aos-delay="100">
+                <div className="image">
+                  <Image src={userImage} alt="Cause" />
                 </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+                <div className="content">
+                  <h6>
+                    <Link href={`/causes-details/${donatur.fundraising_id}`}>
+                      {donatur.name}
+                    </Link>
+                  </h6>
+                  <div className="cause-price">
+                    <p>{donatur.notes}</p>
+                    <span
+                      className="badge bg-success"
+                      style={{ display: "block", width: "15rem" }}
+                    >
+                      Approved
+                    </span>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <h5 className="widget-title">Belum Ada Donatur</h5>
+      )}
+
       {pageNumbers.length > 1 && (
         <ul
           className="pagination"
