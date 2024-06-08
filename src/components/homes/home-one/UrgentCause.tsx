@@ -97,14 +97,16 @@ const UrgentCause = () => {
                     }}
                   />
                 </div>
-
+                <p
+                  className="d-flex align-content-end gap-2 position-relative mb-5 "
+                  style={{ fontWeight: "lighter" }}
+                >
+                  <div className="position-absolute end-0">
+                    <strong> {cause.fundraiser_name} </strong>
+                    <i className="fas fa-check-circle text-info ml-2"></i>
+                  </div>
+                </p>
                 <div className="content">
-                  <p className="d-flex align-content-end gap-2 position-relative mb-5">
-                    <div className="position-absolute end-0">
-                      <strong> {cause.fundraiser_name} </strong>
-                      <i className="fas fa-check-circle text-info ml-2"></i>
-                    </div>
-                  </p>
                   <h5 className="fs-6">
                     <Link href={`/causes-details/${cause.id}`}>
                       {cause.name}

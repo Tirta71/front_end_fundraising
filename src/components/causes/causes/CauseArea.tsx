@@ -182,9 +182,7 @@ const CauseArea = () => {
                     </div>
                     <div className="d-flex align-content-end gap-2 position-relative mb-5 ">
                       <div className="position-absolute end-0">
-                        <strong className="fs-5">
-                          {item.fundraiser_name}{" "}
-                        </strong>
+                        <span className="fs-6">{item.fundraiser_name} </span>
                         <i className="fas fa-check-circle text-info ml-2"></i>
                       </div>
                     </div>
