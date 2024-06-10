@@ -1,6 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
+"use client";
+import ChatBot from "./ChatBot";
 import CommonFaq from "./CommonFaq";
 
-const FaqStyleOne = () => {
+const FaqStyleOne: React.FC = () => {
   return (
     <div className="faq-page-area pb-100 rel z-1 mt-5">
       <div className="container">
@@ -19,11 +22,19 @@ const FaqStyleOne = () => {
         </div>
 
         <div className="row">
-          <div className="col-lg-6">
-            <CommonFaq style={true} />
+          <div className="col-12">
+            <CommonFaq />
           </div>
-          <div className="col-lg-6">
-            <CommonFaq style={false} />
+        </div>
+        <div className="row mt-5">
+          <div className="section-title text-center ">
+            <h2>
+              <span>ChatBot</span>
+            </h2>
+            <p>If your question isn't answered, you can ask it here</p>
+          </div>
+          <div className="col-12">
+            <ChatBot />
           </div>
         </div>
       </div>
