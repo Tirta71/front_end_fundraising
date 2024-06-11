@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { fetchDonaturs, Donatur } from "@/utils/fetchDonatur";
-import userImage from "@/assets/img/about/user.jpg";
+import userImage from "@/assets/img/about/user_kuning.jpg";
 
 interface CauseDetailsSidebarProps {
   id_cause: number;

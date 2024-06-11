@@ -27,7 +27,7 @@ const NavMenu = () => {
 
   return (
     <ul className="navbar-nav menu-open text-lg-end">
-      {menu_data.map((menu: any) => (
+      {menu_data.map((menu) => (
         <li
           key={menu.id}
           onClick={() => openMobileMenu(menu.title)}
@@ -40,7 +40,7 @@ const NavMenu = () => {
               isMenuItemActive(menu.link) ||
               (menu.sub_menus &&
                 menu.sub_menus.some(
-                  (sub_m: any) => sub_m.link && isSubMenuItemActive(sub_m.link)
+                  (sub_m) => sub_m.link && isSubMenuItemActive(sub_m.link)
                 ))
                 ? "active"
                 : ""
@@ -53,7 +53,7 @@ const NavMenu = () => {
             <>
               {menu.sub_menus && (
                 <ul className="sub-menu">
-                  {menu.sub_menus.map((sub_m: any, i: any) => (
+                  {menu.sub_menus.map((sub_m, i) => (
                     <li
                       key={i}
                       onClick={() => openMobileMenu(menu.title)}

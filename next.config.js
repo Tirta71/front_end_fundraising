@@ -14,6 +14,12 @@ const nextConfig = {
         port: "8000",
         pathname: "/storage/**",
       },
+      {
+        protocol: "https",
+        hostname: "peserta23.sib6.nurulfikri.com",
+        port: "",
+        pathname: "/storage/thumbnails/**",
+      },
     ],
   },
 };
