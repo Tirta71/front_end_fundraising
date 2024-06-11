@@ -31,7 +31,7 @@ const ChooseArea = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   // Handle tab click event
-  const handleTabClick = (index: any) => {
+  const handleTabClick = (index: number) => {
     setActiveTab(index);
   };
 
@@ -39,7 +39,10 @@ const ChooseArea = () => {
     AOS.init({
       duration: 1500, // Durasi animasi dalam milidetik
     });
-  }, []);
+
+    // Refresh AOS to reapply animations on tab change
+    AOS.refresh();
+  }, [activeTab]);
 
   return (
     <>

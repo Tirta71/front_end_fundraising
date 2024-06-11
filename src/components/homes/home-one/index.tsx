@@ -17,14 +17,10 @@ const HomeOne = () => {
       <main>
         <HeroArea />
         <UrgentCause />
-
         <ChooseArea />
-
-        <Features />
         <Event />
-
+        <Features />
         <Volunteer style={true} />
-
         <CtaArea />
       </main>
       <FooterOne />
