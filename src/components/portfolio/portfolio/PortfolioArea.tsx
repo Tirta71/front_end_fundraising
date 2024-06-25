@@ -20,7 +20,6 @@ const PortfolioArea = () => {
         console.log(data);
       } catch (error) {
         console.error("Error fetching portfolio data:", error);
-        toast.error("Failed to fetch portfolio data");
       }
     };
 
@@ -28,6 +27,14 @@ const PortfolioArea = () => {
   }, []);
 
   const renderPortfolioItems = () => {
+    if (portfolioData.length === 0) {
+      return (
+        <div className="col-12 text-center">
+          <p>Belum ada portfolio.</p>
+        </div>
+      );
+    }
+
     return portfolioData.map((item: any) => (
       <div key={item.id} className="col-xl-4 col-md-6 item">
         <div className="portfolio-item image">

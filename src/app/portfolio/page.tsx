@@ -2,7 +2,7 @@ import Portfolio from "@/components/portfolio/portfolio";
 import Wrapper from "@/layout/Wrapper";
 
 export const metadata = {
-  title: "Portfolio Charity - Charity ",
+  title: "Portfolio - Donasi Pedia ",
 };
 const index = () => {
   return (
