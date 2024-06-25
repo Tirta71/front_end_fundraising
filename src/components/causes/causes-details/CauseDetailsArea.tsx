@@ -105,7 +105,11 @@ const CauseDetailsArea = ({ id_cause }: CauseDetailsAreaProps) => {
                     src={`${baseUrl}/storage/${causeDetails.fundraiser.avatar}`}
                     alt={causeDetails.fundraiser.name}
                     className=" rounded-circle border"
-                    style={{ width: "100px", height: "100px" }}
+                    style={{
+                      width: "100px",
+                      height: "100px",
+                      objectFit: "cover",
+                    }}
                   />
                   <div className="mt-3">
                     <div className="font-semibold text-lg flex items-center">

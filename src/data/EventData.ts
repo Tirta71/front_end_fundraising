@@ -1,7 +1,7 @@
 import eventThumb_1 from "@/assets/img/Team/my_profile.jpg";
 import eventThumb_2 from "@/assets/img/Team/nf_logo.jpg";
-import eventThumb_3 from "@/assets/img/events/event3.jpg";
-import eventThumb_4 from "@/assets/img/events/event4.jpg";
+import eventThumb_3 from "@/assets/img/Team/annisa.jpg";
+import eventThumb_4 from "@/assets/img/Team/sarah.jpg";
 import eventThumb_5 from "@/assets/img/events/event5.jpg";
 import eventThumb_6 from "@/assets/img/events/event6.jpg";
 
@@ -26,7 +26,7 @@ const event_data: DataType[] = [
     page: "home_1",
     thumb: eventThumb_1.src,
     title: "Tirta Samara",
-    job: "Front End",
+    job: "Front End Developer",
     university: "Universitas Komputer Indonesia",
     width: 100,
     height: 435,
@@ -47,9 +47,9 @@ const event_data: DataType[] = [
     id: 3,
     page: "home_1",
     thumb: eventThumb_3.src,
-    title: "Annisa",
-    job: "Graphic Designer",
-    university: "Melbourne City University",
+    title: "Annisa Luthfi F",
+    job: "Back End Developer",
+    university: "Universitas Sriwijaya",
     width: 300,
     height: 435,
   },
@@ -57,9 +57,9 @@ const event_data: DataType[] = [
     id: 4,
     page: "home_1",
     thumb: eventThumb_4.src,
-    title: "Sarah",
-    job: "Project Manager",
-    university: "Melbourne City University",
+    title: "SaraH Khoirunnisa",
+    job: "Back End Developer",
+    university: "Universitas Kuningan",
     width: 300,
     height: 335,
   },
