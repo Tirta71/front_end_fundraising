@@ -23,7 +23,7 @@ const HeroArea = () => {
             </Link>
             <Link
               className="cr-btn btn--yellow btn--style-two"
-              href="/become-volunteers"
+              href="https://tirta.site/login"
             >
               Become Volunteer
             </Link>
