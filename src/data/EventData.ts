@@ -2,8 +2,8 @@ import eventThumb_1 from "@/assets/img/Team/my_profile.jpg";
 import eventThumb_2 from "@/assets/img/Team/nf_logo.jpg";
 import eventThumb_3 from "@/assets/img/Team/annisa.jpg";
 import eventThumb_4 from "@/assets/img/Team/sarah.jpg";
-import eventThumb_5 from "@/assets/img/events/event5.jpg";
-import eventThumb_6 from "@/assets/img/events/event6.jpg";
+import eventThumb_5 from "@/assets/img/Team/zavira.jpg";
+import eventThumb_6 from "@/assets/img/Team/fadil.jpg";
 
 interface DataType {
   id: number;
@@ -67,9 +67,9 @@ const event_data: DataType[] = [
     id: 5,
     page: "home_1",
     thumb: eventThumb_5.src,
-    title: "Zavira",
-    job: "Content Writer",
-    university: "Melbourne City University",
+    title: "Zavira raihana salsabila",
+    job: "Back End Developer",
+    university: "Universitas Muria Kudus",
     width: 300,
     height: 447,
   },
@@ -77,9 +77,9 @@ const event_data: DataType[] = [
     id: 6,
     page: "home_1",
     thumb: eventThumb_6.src,
-    title: "Fadil",
-    job: "Data Scientist",
-    university: "Melbourne City University",
+    title: "Muhammad fadilah",
+    job: "Back End Developer",
+    university: "Universitas Negeri MANADO",
     width: 300,
     height: 335,
   },
